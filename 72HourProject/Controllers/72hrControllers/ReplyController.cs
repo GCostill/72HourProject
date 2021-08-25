@@ -12,6 +12,7 @@ namespace _72HourProject.Controllers._72hrControllers
         public ActionResult Index()
         {
             return View();
+            Console.WriteLine("First Change");
         }
     }
 }
