@@ -1,5 +1,7 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using _72HourProject.Models.POCOs;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -29,5 +31,9 @@ namespace _72HourProject.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Reply> Replys { get; set; }
     }
 }
