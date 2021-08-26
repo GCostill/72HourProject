@@ -1,5 +1,6 @@
 ﻿using _72HourProject.Models;
 using _72HourProject.Models.POCOs;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
