@@ -39,7 +39,7 @@ namespace _72HourProject.Controllers._72hrControllers
                 AuthorId = reply.AuthorId
             };
 
-            _context.Replys.Add(replyEntity);
+            _context.Replies.Add(replyEntity);
 
             if (await _context.SaveChangesAsync() > 0)
             {
@@ -53,7 +53,7 @@ namespace _72HourProject.Controllers._72hrControllers
         [HttpGet]
         public async Task<IHttpActionResult> GetByCommentId([FromUri] int commentId)
         {
-            var reply = await _context.Replys.ToListAsync();
+            var reply = await _context.Replies.ToListAsync();
 
             if (reply is null)
             {
@@ -83,7 +83,7 @@ namespace _72HourProject.Controllers._72hrControllers
         [HttpGet]
         public async Task<IHttpActionResult> GetByAuthorId([FromBody] Guid AuthorIdAsString)
         {
-            var reply = await _context.Replys.ToListAsync();
+            var reply = await _context.Replies.ToListAsync();
 
             if (reply is null)
             {
@@ -124,7 +124,7 @@ namespace _72HourProject.Controllers._72hrControllers
                 return BadRequest(ModelState);
             }
 
-            var reply = await _context.Replys.FindAsync(id);
+            var reply = await _context.Replies.FindAsync(id);
 
             if (reply is null)
             {
@@ -153,11 +153,11 @@ namespace _72HourProject.Controllers._72hrControllers
                 return BadRequest();
             }
 
-            var reply = await _context.Replys.FindAsync(id);
+            var reply = await _context.Replies.FindAsync(id);
 
             if (reply != null)
             {
-                _context.Replys.Remove(reply);
+                _context.Replies.Remove(reply);
 
                 if (await _context.SaveChangesAsync() > 0)
                 {
