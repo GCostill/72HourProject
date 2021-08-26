@@ -34,6 +34,6 @@ namespace _72HourProject.Models
 
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Reply> Replys { get; set; }
+        public DbSet<Reply> Replies { get; set; }
     }
 }
