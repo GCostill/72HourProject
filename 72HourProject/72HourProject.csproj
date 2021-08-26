@@ -211,6 +211,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Data\CommentData.cs" />
+    <Compile Include="Data\PostData.cs" />
+    <Compile Include="Data\ReplyData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +231,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\CommentService.cs" />
+    <Compile Include="Services\PostService.cs" />
+    <Compile Include="Services\ReplyService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

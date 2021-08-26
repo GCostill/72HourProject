@@ -1,17 +1,52 @@
-﻿using System;
+﻿using _72HourProject.Models;
+using _72HourProject.Models.POCOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace _72HourProject.Controllers._72hrControllers
 {
-    public class CommentController : Controller
+    public class CommentController : ApiController
     {
-        // GET: Comment
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
+        //POST(Create) a Comment on a Post using a Foreign Key relationship (required)
+        [HttpPost]
+        public async Task<IHttpActionResult> CreateComment([FromBody] Comment model)
         {
-            return View();
+            if (model is null)
+                return BadRequest(); 
+            
+            if (ModelState.IsValid)
+            {
+                _context.Comments.Add(model);
+                int changeCount = await _context.SaveChangesAsync();
+                return Ok();
+            }
+
+            return BadRequest();
+        }                                             
+
+        //GET Comments By Post Id(required)
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByPostId([FromUri] int id)
+        {
+            Comment comments = await _context.Comments.FindAsync(id);
+            if(comments != null)
+            {
+                return Ok(comments);
+            }
+            return NotFound();
         }
+
+        //GET Comments By Author Id
+
+        //PUT(Update) a Comment
+
+        //DELETE a Comment
+
     }
 }
