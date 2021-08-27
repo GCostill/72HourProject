@@ -8,7 +8,6 @@ namespace _72HourProject.Data
 {
     public class PostData
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -27,9 +26,5 @@ namespace _72HourProject.Data
         [Required]
         public Guid AuthorId { get; set; }
 
-        public static implicit operator PostData(PostData v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

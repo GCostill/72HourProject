@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _72HourProject.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,19 +8,19 @@ namespace _72HourProject.Services
 {
     public class PostService
     {
-        private readonly Guid _authorId;
+        public readonly Guid _authorId;
 
         public PostService(Guid authorId)
         {
             _authorId = authorId;
         }
 
-        public bool CreatePost(PostCreate model)
+        public bool CreatePostData(PostData model)
         {
             var entity =
-                new Posts()
+                new PostData()
                 {
-                    Id = _authorId,
+                    AuthorId = _authorId,
                     Title = model.Title,
                     Text = model.Text,
 
@@ -32,24 +33,24 @@ namespace _72HourProject.Services
             }
 
         }
-        public IEnumerable<PostListItem> GetPosts()
+        public IEnumerable<PostData> GetPosts()
         {
             using (var ctx = new Models.ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Posts
-                        .Where(e => e.Id == _authorId)
+                        .Where(e => e.AuthorId == _authorId)
                         .Select(
                                 e =>
-                                    new PostListItem
+                                    new PostData
                                     {
-                                        Id = e.PostId,
+                                        AuthorId = _authorId,
                                         Title = e.Title,
                                         Text = e.Text
                                     }
                          );
-                return query.ToArray();
+                return query.ToList();
             }
         }
     }
