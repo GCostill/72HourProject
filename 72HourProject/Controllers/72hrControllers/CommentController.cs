@@ -1,4 +1,5 @@
-﻿using _72HourProject.Models;
+﻿using _72HourProject.Data;
+using _72HourProject.Models;
 using _72HourProject.Models.POCOs;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace _72HourProject.Controllers._72hrControllers
 
         //POST(Create) a Comment on a Post using a Foreign Key relationship (required)
         [HttpPost]
-        public async Task<IHttpActionResult> CreateComment([FromBody] Comment model)
+        public async Task<IHttpActionResult> CreateComment([FromBody] CommentData model)
         {
             if (model is null)
                 return BadRequest(); 
@@ -32,9 +33,9 @@ namespace _72HourProject.Controllers._72hrControllers
 
         //GET Comments By Post Id(required)
         [HttpGet]
-        public async Task<IHttpActionResult> GetByPostId([FromUri] int id)
+        public async Task<IHttpActionResult> GetByPostId([FromBody] int postId)
         {
-            Comment comments = await _context.Comments.FindAsync(id);
+            CommentData comments = await _context.Comments.FindAsync(postId);
             if(comments != null)
             {
                 return Ok(comments);
