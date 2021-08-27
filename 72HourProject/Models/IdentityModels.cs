@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using _72HourProject.Data;
 using _72HourProject.Models.POCOs;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -34,6 +35,6 @@ namespace _72HourProject.Models
 
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Reply> Replies { get; set; }
+        public DbSet<ReplyData> Replies { get; set; }
     }
 }
