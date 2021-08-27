@@ -33,7 +33,7 @@ namespace _72HourProject.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<CommentData> Comments { get; set; }
         public DbSet<PostData> Posts { get; set; }
         public DbSet<ReplyData> Replies { get; set; }
     }

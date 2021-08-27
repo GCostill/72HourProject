@@ -8,9 +8,9 @@ namespace _72HourProject.Models.POCOs
 {
     public class Comment
     {
+        //this is what the user sees
         public int Id { get; set; }
         public string Text { get; set; }
-        public Guid AuthorId { get; set; }
         public virtual List<Reply> Replies { get; set; }
         [ForeignKey(nameof(Post))]
         public int PostId { get; set; }
